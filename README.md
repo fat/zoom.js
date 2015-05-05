@@ -9,3 +9,6 @@ Demo: https://fat.github.io/zoom.js
 + Include `zoom.js` and `zoom.css` in your application. (note: zoom.js depends on [bootstrap's transition.js](https://raw.github.com/twbs/bootstrap/master/js/transition.js))
 + Add a `data-action="zoom"` attribute to the image tags you want to zoom.
 
+### WHY TO USE IT
+
+It's the best way to zoom an image. It transition/zooms in really cleanly, and then when you're done, scrolls away, [esc] keys away, clicks away… clean af.
