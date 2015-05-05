@@ -1,0 +1,26 @@
+{
+  "name": "zoom.js",
+  "version": "0.0.1",
+  "homepage": "https://github.com/fat/zoom.js",
+  "authors": [
+    "Jacob Thornton <@fat>"
+  ],
+  "description": "Medium's Image Zoom for jQuery",
+  "main": "js/zoom.js",
+  "keywords": [
+    "medium",
+    "zoom",
+    "image"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.4"
+  }
+}
