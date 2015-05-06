@@ -6,7 +6,7 @@ Demo: https://fat.github.io/zoom.js
 
 ### HOW TO USE IT
 
-+ Include `zoom.js` and `zoom.css` in your application. (note: zoom.js depends on [bootstrap's transition.js](https://raw.github.com/twbs/bootstrap/master/js/transition.js))
++ Include `zoom.js` and `zoom.css` in your application. (note: zoom.js depends on [bootstrap's transition.js](https://raw.github.com/twbs/bootstrap/master/js/transition.js)) - don't worry, it's tiny.
 + Add a `data-action="zoom"` attribute to the image tags you want to zoom.
 
 ### WHY TO USE IT
