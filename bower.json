@@ -6,7 +6,10 @@
     "Jacob Thornton <@fat>"
   ],
   "description": "Medium's Image Zoom for jQuery",
-  "main": "js/zoom.js",
+  "main": [
+    "js/zoom.js",
+    "css/zoom.css"
+  ],
   "keywords": [
     "medium",
     "zoom",
