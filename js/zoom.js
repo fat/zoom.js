@@ -21,7 +21,11 @@
   ZoomService.prototype._zoom = function (e) {
     var target = e.target
 
-    if (!target || target.tagName != 'IMG' || (target.width >= (window.innerWidth - Zoom.OFFSET))) return
+    if (!target || target.tagName != 'IMG') return
+
+    if (e.metaKey) return window.open(e.target.src, '_blank')
+
+    if (target.width >= (window.innerWidth - Zoom.OFFSET)) return
 
     this._activeZoomClose(true)
 
