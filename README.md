@@ -12,3 +12,8 @@ Demo: https://fat.github.io/zoom.js
 ### WHY TO USE IT
 
 It's the best way to zoom an image. It transition/zooms in really cleanly, and then when you're done, scrolls away, [esc] keys away, clicks away… clean af.
+
+
+### WHERE TO USE IT
+
+This plugin ~probably~ works in all relevant browsers. If not, let me know. 
