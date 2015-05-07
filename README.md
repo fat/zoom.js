@@ -1,33 +1,39 @@
 # ZOOM.JS
 
-A simple jQuery plugin for beautiful, sleek image zooming; as seen on [Medium](https://medium.com/designing-medium/image-zoom-on-medium-24d146fc0c20).
+A simple jQuery plugin for image zooming; as seen on [Medium](https://medium.com/designing-medium/image-zoom-on-medium-24d146fc0c20).
 
 ### Demo
-You can see zoom.js in action here: https://fat.github.io/zoom.js
+https://fat.github.io/zoom.js
 
-### How To Use zoom.js
+### How
 
 1. Link the zoom.js and zoom.css files to your site or application.
 
 	`<link href="css/zoom.css" rel="stylesheet">`
 
 	`<script src="js/zoom.js">`
-2. zoom.js is dependent on the teeny tiny [transition.js file](https://raw.github.com/twbs/bootstrap/master/js/transition.js) from Bootstrap, so make sure to include that as well.
+
+2. zoom.js is dependent on [transition.js file](https://raw.github.com/twbs/bootstrap/master/js/transition.js) from Bootstrap, so make sure to include that as well.
 
 	`<script src="js/transition.js">`
 
-3. To use zoom.js, simply add a `data-action="zoom"` attribute to an image element you would like to utilise the plugin. For example:
+3. Add a `data-action="zoom"` attribute to the images you want to make zoomable. For example:
 
 	`<img src="img/blog_post_featured.png" data-action="zoom">`
 
 
-### Awesome Features
+### Why
 
-zoom.js will automatically close when the user clicks out of it, scrolls away, or presses the escape key. 
+It's the best way to zoom an image. It transitions/zooms in really smoothly, and then when you're done, scrolls away, [esc] keys away, clicks away… clean af.
 
-Super simple to use. Looks pretty. What more do you want?!
+Also, now if you hold your meta key (`⌘`), it will open in a new tab. wow.
 
 
-### Browser Support
+### Where
 
-zoom.js should (in theory) work in all relevant browsers. If not, create an issue!
+zoom.js should (in theory) work in all relevant browsers. If not, create an issue! Thanks!
+
+
+### Who
+
+Written by @fat, made better by you.
