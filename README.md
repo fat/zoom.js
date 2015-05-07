@@ -23,7 +23,9 @@ You can see zoom.js in action here: https://fat.github.io/zoom.js
 
 ### Awesome Features
 
-zoom.js will automatically close when the user clicks out of it, or press the escape key. 
+zoom.js will automatically close when the user clicks out of it, or presses the escape key. 
+
+Super simple to use. Looks pretty. What more do you want?!
 
 
 ### Browser Support
