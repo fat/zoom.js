@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <style>
     /* SIMPLE DEMO STYLES */
     body {
-      font-family: helvetica;
+      font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+      font-size: 12px;
+      line-height: 1.6;
     }
     .container {
-      margin: 100px auto;
+      margin: 50px;
       max-width: 700px;
     }
     .container img {
@@ -17,6 +21,15 @@
       width: 55%;
       float: left;
       margin: 20px 20px 20px -80px;
+    }
+    @media (min-width: 750px) {
+      body {
+        font-size: 16px;
+        line-height: 1.6;
+      }
+      .container {
+        margin: 100px auto;
+      }
     }
   </style>
   <link rel="stylesheet" type="text/css" href="css/zoom.css">
