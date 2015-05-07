@@ -9,17 +9,22 @@ https://fat.github.io/zoom.js
 
 1. Link the zoom.js and zoom.css files to your site or application.
 
-	`<link href="css/zoom.css" rel="stylesheet">`
-
-	`<script src="js/zoom.js">`
+  ```html
+  <link href="css/zoom.css" rel="stylesheet">
+  <script src="js/zoom.js"></script>
+  ```
 
 2. zoom.js is dependent on [transition.js file](https://raw.github.com/twbs/bootstrap/master/js/transition.js) from Bootstrap, so make sure to include that as well.
 
-	`<script src="js/transition.js">`
+  ```html
+  <script src="js/transition.js"></script>
+  ```
 
 3. Add a `data-action="zoom"` attribute to the images you want to make zoomable. For example:
 
-	`<img src="img/blog_post_featured.png" data-action="zoom">`
+  ```html
+  <img src="img/blog_post_featured.png" data-action="zoom">
+  ```
 
 
 ### Why
