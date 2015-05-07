@@ -1,9 +1,9 @@
 # ZOOM.JS
 
-Beautiful, sleek image zoom transition as seen on [Medium](https://medium.com/designing-medium/image-zoom-on-medium-24d146fc0c20).
+A simple jQuery plugin for beautiful, sleek image zooming; as seen on [Medium](https://medium.com/designing-medium/image-zoom-on-medium-24d146fc0c20).
 
 ### Demo
-You can see a demo of zoom.js in action here: https://fat.github.io/zoom.js
+You can see zoom.js in action here: https://fat.github.io/zoom.js
 
 ### How To Use zoom.js
 
