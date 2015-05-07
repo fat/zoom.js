@@ -41,4 +41,4 @@ zoom.js should (in theory) work in all relevant browsers. If not, create an issu
 
 ### Who
 
-Written by @fat, made better by you.
+Written by <a href="//twitter.com/fat">@fat</a>, made better by you.
