@@ -12,8 +12,6 @@
     this._$document = $(document)
     this._$window   = $(window)
     this._$body     = $(document.body)
-
-    this._boundClick = $.proxy(this._clickHandler, this)
   }
 
   ZoomService.prototype.listen = function () {
@@ -39,12 +37,9 @@
     // todo(fat): probably worth throttling this
     this._$window.on('scroll.zoom', $.proxy(this._scrollHandler, this))
 
+    this._$document.on('click.zoom', $.proxy(this._clickHandler, this))
     this._$document.on('keyup.zoom', $.proxy(this._keyHandler, this))
     this._$document.on('touchstart.zoom', $.proxy(this._touchStart, this))
-
-    // we use a capturing phase here to prevent unintended js events
-    // sadly no useCapture in jquery api (http://bugs.jquery.com/ticket/14953)
-    document.addEventListener('click', this._boundClick, true)
 
     e.stopPropagation()
   }
@@ -60,8 +55,6 @@
 
     this._$window.off('.zoom')
     this._$document.off('.zoom')
-
-    document.removeEventListener('click', this._boundClick, true)
 
     this._activeZoom = null
   }
