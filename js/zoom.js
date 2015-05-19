@@ -218,6 +218,8 @@
     }
   }
 
-  new ZoomService().listen()
+  $(function () {
+    new ZoomService().listen()
+  })
 
 }(jQuery)
