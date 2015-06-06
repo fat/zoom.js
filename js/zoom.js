@@ -174,7 +174,7 @@
     this._targetImage.offsetWidth // repaint before animating
 
     var imageOffset = $(this._targetImage).offset()
-    var scrollTop   = window.scrollY || window.pageYOffset
+    var scrollTop   = $(window).scrollTop()
 
     var viewportY = scrollTop + (window.innerHeight / 2)
     var viewportX = (window.innerWidth / 2)
