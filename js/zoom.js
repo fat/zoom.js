@@ -218,6 +218,9 @@
     }
   }
 
-  new ZoomService().listen()
+  // wait for dom ready (incase script included before body)
+  $(function () {
+    new ZoomService().listen()
+  })
 
 }(jQuery)
