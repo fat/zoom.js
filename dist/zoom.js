@@ -19,6 +19,8 @@
     this._$document = $(document)
     this._$window   = $(window)
     this._$body     = $(document.body)
+
+    this._boundClick = $.proxy(this._clickHandler, this)
   }
 
   ZoomService.prototype.listen = function () {
@@ -28,7 +30,13 @@
   ZoomService.prototype._zoom = function (e) {
     var target = e.target
 
-    if (!target || target.tagName != 'IMG' || (target.width >= (window.innerWidth - Zoom.OFFSET))) return
+    if (!target || target.tagName != 'IMG') return
+
+    if (this._$body.hasClass('zoom-overlay-open')) return
+
+    if (e.metaKey || e.ctrlKey) return window.open((e.target.getAttribute('data-fullsize') || e.target.src), '_blank')
+
+    if (target.width >= (window.innerWidth - Zoom.OFFSET)) return
 
     this._activeZoomClose(true)
 
@@ -38,9 +46,12 @@
     // todo(fat): probably worth throttling this
     this._$window.on('scroll.zoom', $.proxy(this._scrollHandler, this))
 
-    this._$document.on('click.zoom', $.proxy(this._clickHandler, this))
     this._$document.on('keyup.zoom', $.proxy(this._keyHandler, this))
     this._$document.on('touchstart.zoom', $.proxy(this._touchStart, this))
+
+    // we use a capturing phase here to prevent unintended js events
+    // sadly no useCapture in jquery api (http://bugs.jquery.com/ticket/14953)
+    document.addEventListener('click', this._boundClick, true)
 
     e.stopPropagation()
   }
@@ -56,6 +67,8 @@
 
     this._$window.off('.zoom')
     this._$document.off('.zoom')
+
+    document.removeEventListener('click', this._boundClick, true)
 
     this._activeZoom = null
   }
@@ -168,7 +181,7 @@
     this._targetImage.offsetWidth // repaint before animating
 
     var imageOffset = $(this._targetImage).offset()
-    var scrollTop   = window.scrollY
+    var scrollTop   = $(window).scrollTop()
 
     var viewportY = scrollTop + (window.innerHeight / 2)
     var viewportX = (window.innerWidth / 2)
@@ -212,6 +225,9 @@
     }
   }
 
-  new ZoomService().listen()
+  // wait for dom ready (incase script included before body)
+  $(function () {
+    new ZoomService().listen()
+  })
 
 }(jQuery)
