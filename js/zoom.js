@@ -28,7 +28,7 @@
     if (this._$body.hasClass('zoom-overlay-open')) return
 
     if (e.metaKey || e.ctrlKey) {
-      return e.target.getAttribute('data-original') || window.open(e.target.src, '_blank')
+      return window.open((e.target.getAttribute('data-original') || e.target.src), '_blank')
     }
 
     if (target.width >= (window.innerWidth - Zoom.OFFSET)) return
