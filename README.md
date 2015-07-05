@@ -31,7 +31,9 @@ https://fat.github.io/zoom.js
 
 It's the best way to zoom an image. It transitions/zooms in really smoothly, and then when you're done, scrolls away, [esc] keys away, clicks away… clean af.
 
-Also, now if you hold your meta key (`⌘` on mac) or (`ctrl` on windows), it will open in a new tab. wow.
+If you hold your meta key (`⌘` on mac) or (`ctrl` on windows), it will open in a new tab. wow.
+
+ps. use a `data-original` attr to link to a separate image. Just for meta-clicking tho.
 
 
 ### Where
