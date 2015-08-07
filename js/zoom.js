@@ -200,9 +200,9 @@
 
     var imageCenterY = imageOffset.top + (this._targetImage.height / 2)
     var imageCenterX = imageOffset.left + (this._targetImage.width / 2)
-
-    this._translateY = viewportY - imageCenterY
-    this._translateX = viewportX - imageCenterX
+    
+    this._translateY = Math.round(viewportY - imageCenterY)    
+    this._translateX = Math.round(viewportX - imageCenterX)   
 
     var targetTransform = 'scale(' + this._imgScaleFactor + ')'
     var imageWrapTransform = 'translate(' + this._translateX + 'px, ' + this._translateY + 'px)'
