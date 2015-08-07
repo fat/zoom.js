@@ -38,7 +38,7 @@ ps. use a `data-original` attr to link to a separate image. Just for meta-clicki
 
 ### Where
 
-zoom.js should (in theory) work in all relevant browsers (ie10+). If not, create an issue! Thanks!
+zoom.js should (in theory) work in all relevant browsers (ie9+). If not, create an issue! Thanks!
 
 
 ### Who
