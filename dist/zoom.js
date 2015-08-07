@@ -211,8 +211,22 @@
     this._translateY = viewportY - imageCenterY
     this._translateX = viewportX - imageCenterX
 
-    $(this._targetImage).css('transform', 'scale(' + this._imgScaleFactor + ')')
-    $(this._targetImageWrap).css('transform', 'translate(' + this._translateX + 'px, ' + this._translateY + 'px) translateZ(0)')
+    var targetTransform = 'scale(' + this._imgScaleFactor + ')'
+    var imageWrapTransform = 'translate(' + this._translateX + 'px, ' + this._translateY + 'px) translateZ(0)'
+
+    $(this._targetImage)
+      .css({
+        '-webkit-transform': targetTransform,
+            '-ms-transform': targetTransform,
+                'transform': targetTransform
+      })
+
+    $(this._targetImageWrap)
+      .css({
+        '-webkit-transform': imageWrapTransform,
+            '-ms-transform': imageWrapTransform,
+                'transform': imageWrapTransform
+      })
 
     this._$body.addClass('zoom-overlay-open')
   }
@@ -223,8 +237,19 @@
       .addClass('zoom-overlay-transitioning')
 
     // we use setStyle here so that the correct vender prefix for transform is used
-    $(this._targetImage).css('transform', '')
-    $(this._targetImageWrap).css('transform', '')
+    $(this._targetImage)
+      .css({
+        '-webkit-transform': '',
+            '-ms-transform': '',
+                'transform': ''
+      })
+
+    $(this._targetImageWrap)
+      .css({
+        '-webkit-transform': '',
+            '-ms-transform': '',
+                'transform': ''
+      })
 
     $(this._targetImage)
       .one($.support.transition.end, $.proxy(this.dispose, this))
