@@ -212,7 +212,11 @@
     this._translateX = viewportX - imageCenterX
 
     var targetTransform = 'scale(' + this._imgScaleFactor + ')'
-    var imageWrapTransform = 'translate(' + this._translateX + 'px, ' + this._translateY + 'px) translateZ(0)'
+    var imageWrapTransform = 'translate(' + this._translateX + 'px, ' + this._translateY + 'px)'
+
+    if ($.support.transition) {
+      imageWrapTransform += ' translateZ(0)'
+    }
 
     $(this._targetImage)
       .css({
@@ -250,6 +254,10 @@
             '-ms-transform': '',
                 'transform': ''
       })
+
+    if (!$.support.transition) {
+      return this.dispose()
+    }
 
     $(this._targetImage)
       .one($.support.transition.end, $.proxy(this.dispose, this))
