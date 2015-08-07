@@ -244,6 +244,10 @@
                 'transform': ''
       })
 
+    if (!$.support.transition) {
+      return this.dispose()
+    }
+
     $(this._targetImage)
       .one($.support.transition.end, $.proxy(this.dispose, this))
       .emulateTransitionEnd(300)
