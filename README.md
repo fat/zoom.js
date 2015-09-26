@@ -26,14 +26,18 @@ https://fat.github.io/zoom.js
   <img src="img/blog_post_featured.png" data-action="zoom">
   ```
 
+4. Add a `data-original="path/to/full-size-image"` attribute so it will open up the full size image you specified:
+
+  ```html
+  <img src="img/thumbnail.jpg" data-action="zoom" data-original="img/full-size.jpg">
+  ```
+
 
 ### Why
 
 It's the best way to zoom an image. It transitions/zooms in really smoothly, and then when you're done, scrolls away, [esc] keys away, clicks away… clean af.
 
 If you hold your meta key (`⌘` on mac) or (`ctrl` on windows), it will open in a new tab. wow.
-
-ps. use a `data-original` attr to link to a separate image. Just for meta-clicking tho.
 
 
 ### Where

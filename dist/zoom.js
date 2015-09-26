@@ -1,6 +1,6 @@
 /**
  * zoom.js - It's the best way to zoom an image
- * @version v0.0.2
+ * @version v0.0.3
  * @link https://github.com/fat/zoom.js
  * @license MIT
  */
@@ -42,7 +42,20 @@
 
     this._activeZoomClose(true)
 
-    this._activeZoom = new Zoom(target)
+    var srcOriginal = target.src
+
+    // if 'data-original' is set
+    if (target.getAttribute('data-original')) {
+      // replace the image src with the value of 'data-original'
+      target.src = target.getAttribute('data-original')
+
+      // pass the old src to Zoom object as we need to change the image src
+      // back after we close the zoom
+      this._activeZoom = new Zoom(target, srcOriginal)
+    } else {
+      this._activeZoom = new Zoom(target)
+    }
+
     this._activeZoom.zoomImage()
 
     // todo(fat): probably worth throttling this
@@ -124,13 +137,14 @@
   /**
    * The zoom object
    */
-  function Zoom (img) {
+  function Zoom (img, srcOriginal) {
     this._fullHeight      =
     this._fullWidth       =
     this._overlay         =
     this._targetImageWrap = null
 
     this._targetImage = img
+    this._srcOriginal = srcOriginal || null
 
     this._$body = $(document.body)
   }
@@ -257,6 +271,11 @@
 
     if (!$.support.transition) {
       return this.dispose()
+    }
+
+    // change the image src back if necessary
+    if (this._srcOriginal) {
+      this._targetImage.src = this._srcOriginal
     }
 
     $(this._targetImage)
