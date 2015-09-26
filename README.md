@@ -28,9 +28,9 @@ https://fat.github.io/zoom.js
 
 4. Add a `data-original="path/to/full-size-image"` attribute so it will open up the full size image you specified:
 
-```html
-<img src="img/thumbnail.jpg" data-action="zoom" data-original="img/full-size.jpg">
-```
+  ```html
+  <img src="img/thumbnail.jpg" data-action="zoom" data-original="img/full-size.jpg">
+  ```
 
 
 ### Why
