@@ -1,0 +1,24 @@
+{
+  "name": "zoom.js",
+  "version": "0.0.3",
+  "description": "It's the best way to zoom an image",
+  "main": "js/zoom.js",
+  "authors": [
+    "fat <jacobthornton@gmail.com>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "zoom",
+    "jquery",
+    "image"
+  ],
+  "homepage": "https://github.com/fat/zoom.js",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
