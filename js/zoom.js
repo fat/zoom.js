@@ -23,7 +23,7 @@
   ZoomService.prototype._zoom = function (e) {
     var target = e.target
 
-    if (!target || target.tagName != 'IMG') return
+    if (!target || target.tagName != 'IMG' && target.tagName !== 'VIDEO') return
 
     if (this._$body.hasClass('zoom-overlay-open')) return
 
@@ -36,7 +36,10 @@
     this._activeZoomClose(true)
 
     this._activeZoom = new Zoom(target)
-    this._activeZoom.zoomImage()
+    if (target.tagName === 'IMG')
+      this._activeZoom.zoomImage()
+    else if (target.tagName === 'VIDEO')
+      this._activeZoom.zoomVideo()
 
     // todo(fat): probably worth throttling this
     this._$window.on('scroll.zoom', $.proxy(this._scrollHandler, this))
@@ -142,6 +145,22 @@
     img.src = this._targetImage.src
   }
 
+  Zoom.prototype.zoomVideo = function () {
+    var video = document.createElement('video')
+    var source = document.createElement('source')
+    var _this = this
+
+    video.appendChild(source)
+
+    video.addEventListener('canplay', function() {
+      _this._fullHeight = Number(video.videoHeight)
+      _this._fullWidth = Number(video.videoWidth)
+      _this._zoomOriginal()
+      _this._targetImage.play()
+    }, false)
+    source.src = this._targetImage.currentSrc || this._targetImage.src
+  }
+
   Zoom.prototype._zoomOriginal = function () {
     this._targetImageWrap           = document.createElement('div')
     this._targetImageWrap.className = 'zoom-img-wrap'
@@ -170,7 +189,7 @@
 
     var scrollTop = $(window).scrollTop()
 
-    var maxScaleFactor = originalFullImageWidth / this._targetImage.width
+    var maxScaleFactor = originalFullImageWidth / (this._targetImage.width || this._targetImage.videoWidth)
 
     var viewportHeight = ($(window).height() - Zoom.OFFSET)
     var viewportWidth  = ($(window).width() - Zoom.OFFSET)
@@ -198,8 +217,8 @@
     var viewportY = scrollTop + ($(window).height() / 2)
     var viewportX = ($(window).width() / 2)
 
-    var imageCenterY = imageOffset.top + (this._targetImage.height / 2)
-    var imageCenterX = imageOffset.left + (this._targetImage.width / 2)
+    var imageCenterY = imageOffset.top + ((this._targetImage.height || this._targetImage.offsetHeight) / 2)
+    var imageCenterX = imageOffset.left + ((this._targetImage.width || this._targetImage.offsetWidth) / 2)
 
     this._translateY = viewportY - imageCenterY
     this._translateX = viewportX - imageCenterX
@@ -267,6 +286,8 @@
       this._overlay.parentNode.removeChild(this._overlay)
 
       this._$body.removeClass('zoom-overlay-transitioning')
+      if (this._targetImage.tagName === 'VIDEO' && this._targetImage.getAttribute('data-play') === 'always')
+        this._targetImage.play()
     }
   }
 
