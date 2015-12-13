@@ -1,3 +1,4 @@
+video[data-action="zoom"],
 img[data-action="zoom"] {
   cursor: pointer;
   cursor: -webkit-zoom-in;
@@ -11,6 +12,7 @@ img[data-action="zoom"] {
        -o-transition: all 300ms;
           transition: all 300ms;
 }
+video.zoom-img
 img.zoom-img {
   cursor: pointer;
   cursor: -webkit-zoom-out;
