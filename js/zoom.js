@@ -28,7 +28,7 @@
     if (this._$body.hasClass('zoom-overlay-open')) return
 
     if (e.metaKey || e.ctrlKey) {
-      return window.open((e.target.getAttribute('data-original') || e.target.src), '_blank')
+      return window.open((e.target.getAttribute('data-original') || e.target.currentSrc || e.target.src), '_blank')
     }
 
     if (target.width >= ($(window).width() - Zoom.OFFSET)) return
@@ -139,7 +139,7 @@
       this._fullWidth = Number(img.width)
       this._zoomOriginal()
     }, this)
-    img.src = this._targetImage.src
+    img.src = this._targetImage.currentSrc || this._targetImage.src
   }
 
   Zoom.prototype._zoomOriginal = function () {
