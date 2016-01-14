@@ -33,7 +33,7 @@ It's the best way to zoom an image. It transitions/zooms in really smoothly, and
 
 If you hold your meta key (`⌘` on mac) or (`ctrl` on windows), it will open in a new tab. wow.
 
-ps. use a `data-original` attr to link to a separate image. Just for meta-clicking tho.
+ps. use a `data-original` attr to link to a separate image. for meta-clicking and zoom in image source.
 
 
 ### Where

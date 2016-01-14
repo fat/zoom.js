@@ -1,6 +1,6 @@
 /**
  * zoom.js - It's the best way to zoom an image
- * @version v0.0.2
+ * @version v0.0.3
  * @link https://github.com/fat/zoom.js
  * @license MIT
  */
@@ -141,12 +141,17 @@
 
   Zoom.prototype.zoomImage = function () {
     var img = document.createElement('img')
+    var target = this._targetImage;
+    var full = target.dataset.original || target.src;
+    target.classList.add('loading');
     img.onload = $.proxy(function () {
       this._fullHeight = Number(img.height)
       this._fullWidth = Number(img.width)
       this._zoomOriginal()
+      target.classList.remove('loading');
     }, this)
-    img.src = this._targetImage.src
+    img.src = full;
+    target.src = full;
   }
 
   Zoom.prototype._zoomOriginal = function () {
