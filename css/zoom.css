@@ -15,6 +15,14 @@ img.zoom-img {
   cursor: pointer;
   cursor: -webkit-zoom-out;
   cursor: -moz-zoom-out;
+
+  filter: none; 
+  -webkit-filter: blur(0px); 
+  -moz-filter: blur(0px); 
+  -ms-filter: blur(0px);
+  filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='0');
+  backface-visibility: hidden;
+  transform: translateZ(0);
 }
 .zoom-overlay {
   z-index: 9999;
