@@ -1,4 +1,5 @@
 var gulp = require('gulp');
+var babel = require('gulp-babel');
 var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
 var gfi = require('gulp-file-insert');
@@ -16,6 +17,9 @@ var banner = ['/**',
 
 gulp.task('compress', function() {
     gulp.src('js/*.js')
+        .pipe(babel({
+          presets: ['es2015']
+        }))
         .pipe(header(banner, { pkg : pkg } ))
         .pipe(gulp.dest('dist'))
         .pipe(uglify())
