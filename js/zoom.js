@@ -1,5 +1,4 @@
-+function ($) { "use strict";
-
++function ($) {
   /**
    * The zoom service
    */
@@ -133,18 +132,32 @@
   Zoom._MAX_HEIGHT = 4096
 
   Zoom.prototype.zoomImage = function () {
-    var img = document.createElement('img')
+    var img = document.createElement('img');
+    var bigger = document.createElement('img');
     var target = this._targetImage;
     var full = target.dataset.original || target.src;
-    target.classList.add('loading');
-    img.onload = $.proxy(function () {
+
+    img.onload = () => {
       this._fullHeight = Number(img.height)
       this._fullWidth = Number(img.width)
+      this._offset = $(this._targetImage).offset()
       this._zoomOriginal()
-      target.classList.remove('loading');
-    }, this)
-    img.src = full;
-    target.src = full;
+
+      if (target.dataset.source) return;
+      bigger.src = full;
+    };
+
+    bigger.onload = () => {
+      if (target.dataset.action !== 'zoom-out' || !this._$body.hasClass('zoom-overlay-open')) return;
+      target.dataset.source = true;
+      target.src = full;
+      this._fullHeight = Number(bigger.height)
+      this._fullWidth = Number(bigger.width)
+      this._calculateZoom();
+      this._triggerAnimation();
+    };
+
+    img.src = target.src;
   }
 
   Zoom.prototype._zoomOriginal = function () {
@@ -197,14 +210,13 @@
   Zoom.prototype._triggerAnimation = function () {
     this._targetImage.offsetWidth // repaint before animating
 
-    var imageOffset = $(this._targetImage).offset()
     var scrollTop   = $(window).scrollTop()
 
     var viewportY = scrollTop + ($(window).height() / 2)
     var viewportX = ($(window).width() / 2)
 
-    var imageCenterY = imageOffset.top + (this._targetImage.height / 2)
-    var imageCenterX = imageOffset.left + (this._targetImage.width / 2)
+    var imageCenterY = this._offset.top + (this._targetImage.height / 2)
+    var imageCenterX = this._offset.left + (this._targetImage.width / 2)
 
     this._translateY = viewportY - imageCenterY
     this._translateX = viewportX - imageCenterX
