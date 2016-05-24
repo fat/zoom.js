@@ -1,20 +1,21 @@
 /**
  * zoom.js - It's the best way to zoom an image
- * @version v0.0.2
+ * @version v0.0.3
  * @link https://github.com/fat/zoom.js
  * @license MIT
  */
 
-+function ($) { "use strict";
+;(function ($) {
+  "use strict";
 
   /**
    * The zoom service
    */
   function ZoomService () {
     this._activeZoom            =
-    this._initialScrollPosition =
-    this._initialTouchPosition  =
-    this._touchMoveListener     = null
+      this._initialScrollPosition =
+      this._initialTouchPosition  =
+      this._touchMoveListener     = null
 
     this._$document = $(document)
     this._$window   = $(window)
@@ -126,9 +127,9 @@
    */
   function Zoom (img) {
     this._fullHeight      =
-    this._fullWidth       =
-    this._overlay         =
-    this._targetImageWrap = null
+      this._fullWidth       =
+      this._overlay         =
+      this._targetImageWrap = null
 
     this._targetImage = img
 
@@ -163,7 +164,7 @@
     this._overlay           = document.createElement('div')
     this._overlay.className = 'zoom-overlay'
 
-    document.body.appendChild(this._overlay)
+    this._targetImageWrap.parentNode.insertBefore(this._overlay, this._targetImageWrap)
 
     this._calculateZoom()
     this._triggerAnimation()
@@ -221,15 +222,15 @@
     $(this._targetImage)
       .css({
         '-webkit-transform': targetTransform,
-            '-ms-transform': targetTransform,
-                'transform': targetTransform
+        '-ms-transform': targetTransform,
+        'transform': targetTransform
       })
 
     $(this._targetImageWrap)
       .css({
         '-webkit-transform': imageWrapTransform,
-            '-ms-transform': imageWrapTransform,
-                'transform': imageWrapTransform
+        '-ms-transform': imageWrapTransform,
+        'transform': imageWrapTransform
       })
 
     this._$body.addClass('zoom-overlay-open')
@@ -244,15 +245,15 @@
     $(this._targetImage)
       .css({
         '-webkit-transform': '',
-            '-ms-transform': '',
-                'transform': ''
+        '-ms-transform': '',
+        'transform': ''
       })
 
     $(this._targetImageWrap)
       .css({
         '-webkit-transform': '',
-            '-ms-transform': '',
-                'transform': ''
+        '-ms-transform': '',
+        'transform': ''
       })
 
     if (!$.support.transition) {
@@ -282,4 +283,4 @@
     new ZoomService().listen()
   })
 
-}(jQuery)
+})(jQuery);
