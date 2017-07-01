@@ -211,6 +211,8 @@
       imageWrapTransform += ' translateZ(0)'
     }
 
+    $(this._targetImage).attr("data-style-backup", $(this._targetImage).attr("style"));
+
     $(this._targetImage)
       .css({
         '-webkit-transform': targetTransform,
@@ -248,6 +250,8 @@
                 'transform': ''
       })
 
+    $(this._targetImage).attr("style", $(this._targetImage).attr("data-style-backup"));
+
     if (!$.support.transition) {
       return this.dispose()
     }
@@ -262,6 +266,8 @@
       $(this._targetImage)
         .removeClass('zoom-img')
         .attr('data-action', 'zoom')
+
+      $(this._targetImage).attr("data-style-backup", '')
 
       this._targetImageWrap.parentNode.replaceChild(this._targetImage, this._targetImageWrap)
       this._overlay.parentNode.removeChild(this._overlay)
