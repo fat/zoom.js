@@ -39,3 +39,7 @@ img.zoom-img {
 .zoom-overlay-transitioning {
   cursor: default;
 }
+
+.zoom-dark {
+  background: #10171e;
+}
