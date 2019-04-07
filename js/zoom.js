@@ -155,6 +155,12 @@
 
     this._overlay           = document.createElement('div')
     this._overlay.className = 'zoom-overlay'
+    
+    if ($('img').hasClass('dark') === true) {
+      $(this._overlay).addClass('zoom-dark')
+    } else {
+      $(this._overlay).addClass('zoom-overlay')
+    }
 
     document.body.appendChild(this._overlay)
 
