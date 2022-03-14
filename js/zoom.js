@@ -9,40 +9,13 @@
     this._initialTouchPosition  =
     this._touchMoveListener     = null
 
-    this._$document = $(document)
-    this._$window   = $(window)
-    this._$body     = $(document.body)
-
     this._boundClick = $.proxy(this._clickHandler, this)
   }
 
-  ZoomService.prototype.listen = function () {
-    this._$body.on('click', '[data-action="zoom"]', $.proxy(this._zoom, this))
   }
 
-  ZoomService.prototype._zoom = function (e) {
-    var target = e.target
 
-    if (!target || target.tagName != 'IMG') return
 
-    if (this._$body.hasClass('zoom-overlay-open')) return
-
-    if (e.metaKey || e.ctrlKey) {
-      return window.open((e.target.getAttribute('data-original') || e.target.src), '_blank')
-    }
-
-    if (target.width >= ($(window).width() - Zoom.OFFSET)) return
-
-    this._activeZoomClose(true)
-
-    this._activeZoom = new Zoom(target)
-    this._activeZoom.zoomImage()
-
-    // todo(fat): probably worth throttling this
-    this._$window.on('scroll.zoom', $.proxy(this._scrollHandler, this))
-
-    this._$document.on('keyup.zoom', $.proxy(this._keyHandler, this))
-    this._$document.on('touchstart.zoom', $.proxy(this._touchStart, this))
 
     // we use a capturing phase here to prevent unintended js events
     // sadly no useCapture in jquery api (http://bugs.jquery.com/ticket/14953)
@@ -62,6 +35,13 @@
 
   ZoomService.prototype._activeZoomClose = function (forceDispose) {
     if (!this._activeZoom) return
+      document.addEventListener('click', this._boundClick, true)
+      document.addEventListener('click', this._boundClick, true)
+      document.addEventListener('click', this._boundClick, true)
+      document.addEventListener('click', this._boundClick, true)
+      document.addEventListener('click', this._boundClick, true)
+      document.addEventListener('click', this._boundClick, true)
+      document.addEventListener('click', this._boundClick, true)
 
     if (forceDispose) {
       this._activeZoom.dispose()
@@ -71,9 +51,9 @@
 
     this._$window.off('.zoom')
     this._$document.off('.zoom')
-
+document.addEventListener('click', this._boundClick, true)
     document.removeEventListener('click', this._boundClick, true)
-
+document.addEventListener('click', this._boundClick, true)
     this._activeZoom = null
   }
 
@@ -90,14 +70,14 @@
   ZoomService.prototype._clickHandler = function (e) {
     if (e.preventDefault) e.preventDefault()
     else event.returnValue = false
-
+document.addEventListener('click', this._boundClick, true)
     if ('bubbles' in e) {
       if (e.bubbles) e.stopPropagation()
     } else {
       // Internet Explorer before version 9
       e.cancelBubble = true
     }
-
+document.addEventListener('click', this._boundClick, true)
     this._activeZoomClose()
   }
 
