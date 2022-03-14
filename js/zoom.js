@@ -9,26 +9,11 @@
     this._initialTouchPosition  =
     this._touchMoveListener     = null
 
-    this._$document = $(document)
-    //this._$window   = $(window)
-
     this._boundClick = $.proxy(this._clickHandler, this)
   }
 
-  ZoomService.prototype.listen = function () {
-    this._$body.on('click', '[data-action="zoom"]', $.proxy(this._zoom, this))
   }
 
-  ZoomService.prototype._zoom = function (e) {
-    var target = e.target
-
-    if (!target || target.tagName != 'IMG') return
-
-    if (this._$body.hasClass('zoom-overlay-open')) return
-
-    if (e.metaKey || e.ctrlKey) {
-      return window.open((e.target.getAttribute('data-original') || e.target.src), '_blank')
-    }
 
 
 
@@ -50,6 +35,13 @@
 
   ZoomService.prototype._activeZoomClose = function (forceDispose) {
     if (!this._activeZoom) return
+      document.addEventListener('click', this._boundClick, true)
+      document.addEventListener('click', this._boundClick, true)
+      document.addEventListener('click', this._boundClick, true)
+      document.addEventListener('click', this._boundClick, true)
+      document.addEventListener('click', this._boundClick, true)
+      document.addEventListener('click', this._boundClick, true)
+      document.addEventListener('click', this._boundClick, true)
 
     if (forceDispose) {
       this._activeZoom.dispose()
