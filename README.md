@@ -1,4 +1,4 @@
-# ZOOM.JS
+Software is hard… 2025-10-29T01:42:59.973Z # ZOOM.JS
 
 A simple jQuery plugin for image zooming; as seen on [Medium](https://medium.com/designing-medium/image-zoom-on-medium-24d146fc0c20).
 
